@@ -1,0 +1,81 @@
+body{
+    text-align: center;
+    background-color: black;
+    color: white;
+    font-family: monospace;
+}
+#title{
+    margin: 0px 0px 30px 0px;
+}
+#env-btn{
+    color: black;
+}
+#main{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: space-evenly;
+    grid-row-gap: 50px;
+    margin-top: 100px;
+}
+.cmd-card{
+    padding: 10px;
+    height: 300px;
+    width: 350px;
+    background-color: white;
+    color: black;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px 5px white;
+    border: 1px solid black;
+    overflow: auto;
+    transition: 100ms linear;
+}
+@keyframes fadeIn {
+    from{
+        transform: translateX(300px);
+        opacity: 0%;
+    }
+    to{
+        transform: translateX(0px);
+        opacity: 100%;
+    }
+}
+.cmd-card:hover{
+    transform: scale(1.2);
+}
+#clear-post-cache{
+    grid-column: 1;
+    grid-row: 1;
+}
+#clear-hp-cache{
+    grid-column: 2;
+    grid-row: 1;
+}
+#trigger-syndication{
+    grid-column: 1;
+    grid-row: 2;
+}
+#export-personal-data{
+    grid-column: 2;
+    grid-row: 2;
+}
+.cmd-title{
+    display: block;
+    font-size: 20px;
+    font-weight: bolder;
+    margin: 10px 0px 5px 0px;
+}
+.cmd-input{
+    width:200px;
+}
+.cmd-output{
+    text-align: left;
+    font-size: 11px;
+    font-style: italic;
+}
+.error-output{
+    font-size: 11px;
+    color: red;
+}
