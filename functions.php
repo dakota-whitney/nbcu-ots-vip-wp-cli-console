@@ -35,16 +35,16 @@ function execute_post_clear($input,$environment){
                     $post_id = validate_post($url);
                     return shell_exec("vip @nbcots.$environment -y wp -- --url=$site nbc purge_post_cache $post_id");
                 }else{
-                    return "<p class=\"error-output\">Could not identify post ID in URL</p>";
+                    return "Error: Could not identify post ID in URL";
                 };
             }else{
-                return "<p class=\"error-output\">Site $site doesn't match the selected environment '$environment'</p>";
+                return "Error: Site $site doesn't match the selected environment '$environment'";
             };
         }else{
-            return "<p class=\"error-output\">Not a valid OTS site</p>";
+            return "Error: Not a valid OTS site";
         };
     }else{
-        return "<p class=\"error-output\">Not a valid URL</p>";
+        return "Error: Not a valid URL";
     };
 };
 function execute_homepage_clear($input,$environment){
@@ -55,13 +55,13 @@ function execute_homepage_clear($input,$environment){
             if(validate_environment($site,$environment)){
                 return shell_exec("vip @nbcots.$environment -y wp nbc flush_homepage_cache -- --url=$site");
             }else{
-                return "<p class=\"error-output\">Site $site doesn't match the selected environment '$environment'</p>"; 
+                return "Error: Site $site doesn't match the selected environment '$environment'"; 
             };
         }else{
-            return "<p class=\"error-output\">Not a valid OTS site</p>";
+            return "Error: Not a valid OTS site";
         };
     }else{
-        return "<p class=\"error-output\">Not a valid URL</p>";
+        return "Error: Not a valid URL";
     };
 };
 function execute_trigger_syndication($input,$environment){
@@ -74,16 +74,16 @@ function execute_trigger_syndication($input,$environment){
                     $post_id = validate_post($url);
                     return shell_exec("vip @nbcots.$environment -y wp -- --url=$site --user=feed-consumer@nbc.local nbc trigger_syndication $post_id");
                 }else{
-                    return "<p class=\"error-output\">Could not identify post ID in URL</p>";
+                    return "Error: Could not identify post ID in URL";
                 };
             }else{
-                return "<p class=\"error-output\">Site $site doesn't match the selected environment '$environment'</p>"; 
+                return "Error: Site $site doesn't match the selected environment '$environment'"; 
             };
         }else{
-            return "<p class=\"error-output\">Not a valid OTS site</p>";
+            return "Error: Not a valid OTS site";
         };
     }else{
-        return "<p class=\"error-output\">Not a valid URL</p>";
+        return "Error: Not a valid URL";
     };
 };
 function execute_export_personal_data($input,$environment){
@@ -94,7 +94,7 @@ function execute_export_personal_data($input,$environment){
             if(filter_var($email,FILTER_VALIDATE_EMAIL)){
                 array_push($output,shell_exec("vip @nbcots.$environment -y wp -- nbc export_user_personal_data --type=export --email='$email'"));
             }else{
-                array_push($output,"\n<p class=\"error-output\">$email is not a valid email address</p>\n");
+                array_push($output,"\nError: $email is not a valid email address\n");
             };
         };
         return implode("",$output);
@@ -102,7 +102,7 @@ function execute_export_personal_data($input,$environment){
         if(filter_var($input,FILTER_VALIDATE_EMAIL)){
             return shell_exec("vip @nbcots.$environment -y wp -- nbc export_user_personal_data --type=export --email='$input'");
         }else{
-            return "<p class=\"error-output\">$input is not a valid email address</p>";
+            return "Error: $input is not a valid email address";
         };
     };
 };

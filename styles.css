@@ -4,13 +4,29 @@ body{
     color: white;
     font-family: monospace;
 }
-#title{
-    margin: 0px 0px 30px 0px;
+#login-form{
+    margin-top: 20%;
 }
+#header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.user-email{
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+    font-size: 15px;
+}
+#env-toggle{
+    position: sticky;
+    top: 0;
+    padding: 10px 0px 10px 0px;
+    background-color: black;
+} 
 #env-btn{
     color: black;
 }
-#main{
+#cmd-grid{
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-items: center;
@@ -41,9 +57,6 @@ body{
         transform: translateX(0px);
         opacity: 100%;
     }
-}
-.cmd-card:hover{
-    transform: scale(1.2);
 }
 #clear-post-cache{
     grid-column: 1;
@@ -78,4 +91,23 @@ body{
 .error-output{
     font-size: 11px;
     color: red;
+}
+@media only screen and (min-width: 1200px){
+    .cmd-card:hover{
+        transform: scale(1.2);
+    }
+}
+@media only screen 
+    and (max-width: 1024px){
+      #header{
+          flex-direction: column;
+      }
+  }
+@media only screen 
+  and (max-width: 812px){
+    #cmd-grid{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 }
